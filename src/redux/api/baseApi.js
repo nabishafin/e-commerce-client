@@ -13,7 +13,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
   if (result.error && result.error.status === 401) {
     console.log("Unauthorized access");
-    // Token refresh বা logout হ্যান্ডেল করবে
+
   }
 
   return result;
