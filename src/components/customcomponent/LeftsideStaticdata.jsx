@@ -15,15 +15,38 @@ const LeftsideStaticdata = () => {
 
       {/* 🏷️ Categories */}
       <div className="hidden lg:block p-4 bg-white border rounded-md shadow-sm">
-        <h3 className="text-base font-semibold mb-3 text-gray-700">
-          🔥 Popular Categories
-        </h3>
+        <h3 className="text-base font-semibold mb-3 text-gray-700">🔥 Popular Categories</h3>
         <ul className="text-sm text-gray-600 space-y-2">
-          <li className="hover:text-black cursor-pointer">Electronics</li>
-          <li className="hover:text-black cursor-pointer">Fashion</li>
-          <li className="hover:text-black cursor-pointer">Home & Living</li>
-          <li className="hover:text-black cursor-pointer">Beauty</li>
-          <li className="hover:text-black cursor-pointer">Toys</li>
+          <li className="relative overflow-hidden cursor-pointer group">
+            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
+              Electronics
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+          </li>
+          <li className="relative overflow-hidden cursor-pointer group">
+            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
+              Fashion
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+          </li>
+          <li className="relative overflow-hidden cursor-pointer group">
+            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
+              Home & Living
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+          </li>
+          <li className="relative overflow-hidden cursor-pointer group">
+            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
+              Beauty
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+          </li>
+          <li className="relative overflow-hidden cursor-pointer group">
+            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
+              Toys
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+          </li>
         </ul>
       </div>
 
