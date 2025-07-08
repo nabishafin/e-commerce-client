@@ -25,15 +25,17 @@ export function Navbar({ onHomeClick }) {
         {/* Nav Buttons */}
         <div className="flex items-center space-x-4">
           {/* Home Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onHomeClick}
-            className="flex items-center space-x-2 text-white hover:bg-gray-100"
-          >
-            <Home className="h-4 w-4" />
-            <span className="hidden sm:inline">Home</span>
-          </Button>
+          <Link to={"/"}>
+            <Button
+              variant="ghost"
+              size="sm"
+
+              className="flex items-center space-x-2 text-white hover:bg-gray-100"
+            >
+              <Home className="h-4 w-4" />
+              <span className="hidden sm:inline">Home</span>
+            </Button>
+          </Link>
 
           {/* Cart Button with Badge */}
           <Button
