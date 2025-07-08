@@ -1,15 +1,18 @@
 import { ShoppingCart, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 export function Navbar({ onHomeClick, onCartToggle, cartItemsCount }) {
   return (
     <nav className="sticky top-0 z-50 w-full px-10 bg-gray-950/10 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60  shadow-sm">
       <div className="flex h-16 items-center justify-between px-4">
         {/* Logo / Title */}
-        <div className="flex items-center space-x-4">
-          <h1 className="text-2xl font-bold text-white">Mini E-Commerce</h1>
-        </div>
+        <Link to={"/"}>
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold text-white">Mini E-Commerce</h1>
+          </div>
+        </Link>
 
         {/* Nav Buttons */}
         <div className="flex items-center space-x-4">
