@@ -213,7 +213,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Additional Info */}
-            <div className="border-t pt-6">
+            <div className="border-t pt-2">
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="font-medium">SKU:</span>

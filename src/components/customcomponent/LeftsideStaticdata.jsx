@@ -12,7 +12,10 @@ const LeftsideStaticdata = () => {
   }
 
   return (
-    <div className="w-64 p-4 bg-white border-r border-gray-200 space-y-6">
+
+    // fuuly static
+
+    <div className=" p-4 bg-white border-r border-gray-200 space-y-6 rounded-[5px]">
       {/* Department Section */}
       <div>
         <h3 className="font-semibold text-gray-900 mb-3">Department</h3>
