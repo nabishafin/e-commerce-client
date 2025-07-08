@@ -50,7 +50,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className=" mx-auto p-4">
+        <div className=" mx-auto p-4 md:p-14">
             <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <Input name="name" placeholder="Product Name" value={productData.name} onChange={handleChange} required />

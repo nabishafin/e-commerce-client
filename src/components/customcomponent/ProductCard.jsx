@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
             <img
               src={product.image || "/placeholder.svg"}
               alt={product.name}
-              className="w-full h-full object-cover    border-[1px] "
+              className="w-full h-full object-cover    border-b-[1px] "
             />
           </div>
           <CardTitle className="text-base font-medium px-5 line-clamp-2 text-gray-800">{product.name}</CardTitle>

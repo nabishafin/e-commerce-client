@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import icon from "../../assets/icon.png"
 
 export function Navbar() {
   const navigate = useNavigate()
@@ -24,7 +25,8 @@ export function Navbar() {
         {/* Logo / Title */}
         <Link to={"/"}>
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold ">Mini E-Commerce</h1>
+            <img src={icon} alt="" />
+            <h1 className="text-2xl font-bold hidden md:block ">Mini E-Commerce</h1>
           </div>
         </Link>
 
