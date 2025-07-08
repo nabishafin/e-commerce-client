@@ -1,5 +1,4 @@
-// src/features/products/productsApi.js
-import { baseApi } from "../../api/baseApi";
+import { baseApi } from "../../api/baseApi"
 
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,16 +24,6 @@ export const productsApi = baseApi.injectEndpoints({
       invalidatesTags: ["Product"],
     }),
 
-    // Update product
-    // updateProduct: builder.mutation({
-    //   query: ({ id, ...patch }) => ({
-    //     url: `/products/${id}`,
-    //     method: "PUT",
-    //     body: patch,
-    //   }),
-    //   invalidatesTags: (result, error, { id }) => [{ type: "Product", id }],
-    // }),
-
     // Delete product
     deleteProduct: builder.mutation({
       query: (id) => ({
@@ -43,13 +32,32 @@ export const productsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+
+    // Fake order submission endpoint
+    submitOrder: builder.mutation({
+      queryFn: async (orderData) => {
+        // Simulate API delay
+        await new Promise((resolve) => setTimeout(resolve, 2000))
+
+        // Simulate successful response
+        return {
+          data: {
+            success: true,
+            orderId: "ORD-" + Date.now().toString().slice(-8),
+            message: "Order placed successfully!",
+            orderData: orderData,
+          },
+        }
+      },
+      invalidatesTags: ["Order"],
+    }),
   }),
-});
+})
 
 export const {
   useGetProductsQuery,
   useGetProductByIdQuery,
   useCreateProductMutation,
-  useUpdateProductMutation,
   useDeleteProductMutation,
-} = productsApi;
+  useSubmitOrderMutation,
+} = productsApi
