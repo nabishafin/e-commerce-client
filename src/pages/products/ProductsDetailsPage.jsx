@@ -6,9 +6,8 @@ import { addToCart, openCart } from "../../redux/features/cart/cartSlice";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { ShoppingCart, Star, Heart, Share2, ArrowLeft } from "lucide-react";
-import { toast } from "react-hot-toast"; // অথবা আপনার preferred toast library
+import { toast } from "react-hot-toast"; // 
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
