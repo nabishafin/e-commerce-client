@@ -1,73 +1,156 @@
-import salesbanner from "../../assets/sales.webp";
+import { ChevronDown, Star } from "lucide-react"
+
 const LeftsideStaticdata = () => {
+  const renderStars = (count) => {
+    return (
+      <div className="flex items-center gap-1">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className={`w-4 h-4 ${i < count ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
+        ))}
+      </div>
+    )
+  }
+
   return (
-    <div className="space-y-2">
-      <div className="hidden s lg:block p-4 bg-black text-white rounded-md shadow">
-        <h3 className="text-lg font-semibold mb-2">🎉 Special Offer</h3>
-        <p className="text-sm">
-          Get <span className="font-bold text-yellow-300">20% OFF</span> on your
-          first order! Use code:
-          <span className="font-mono bg-yellow-300 text-black px-2 py-0.5 ml-1 rounded">
-            WELCOME20
-          </span>
-        </p>
+    <div className="w-64 p-4 bg-white border-r border-gray-200 space-y-6">
+      {/* Department Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Department</h3>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="dept-all" name="department" defaultChecked className="text-blue-600" />
+            <label htmlFor="dept-all" className="font-medium">
+              All
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="dept-amazon" name="department" className="text-blue-600" />
+            <label htmlFor="dept-amazon" className="text-sm text-gray-700">
+              Amazon Devices & Accessories
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="dept-appliances" name="department" className="text-blue-600" />
+            <label htmlFor="dept-appliances" className="text-sm text-gray-700">
+              Appliances
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="dept-arts" name="department" className="text-blue-600" />
+            <label htmlFor="dept-arts" className="text-sm text-gray-700">
+              Arts, Crafts & Sewing
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="dept-auto" name="department" className="text-blue-600" />
+            <label htmlFor="dept-auto" className="text-sm text-gray-700">
+              Automotive
+            </label>
+          </div>
+        </div>
+        <button className="flex items-center text-blue-600 text-sm mt-2 hover:underline">
+          <ChevronDown className="w-4 h-4 mr-1" />
+          See more
+        </button>
       </div>
 
-      {/* 🏷️ Categories */}
-      <div className="hidden lg:block p-4 bg-white border rounded-md shadow-sm">
-        <h3 className="text-base font-semibold mb-3 text-gray-700">🔥 Popular Categories</h3>
-        <ul className="text-sm text-gray-600 space-y-2">
-          <li className="relative overflow-hidden cursor-pointer group">
-            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
-              Electronics
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </li>
-          <li className="relative overflow-hidden cursor-pointer group">
-            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
-              Fashion
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </li>
-          <li className="relative overflow-hidden cursor-pointer group">
-            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
-              Home & Living
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </li>
-          <li className="relative overflow-hidden cursor-pointer group">
-            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
-              Beauty
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </li>
-          <li className="relative overflow-hidden cursor-pointer group">
-            <span className="relative z-10 block py-1 px-2 transition-colors duration-300 group-hover:text-white">
-              Toys
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </li>
-        </ul>
+      {/* Brands Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Brands</h3>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <input type="checkbox" id="brand-samsung" className="text-blue-600" />
+            <label htmlFor="brand-samsung" className="text-sm text-gray-700">
+              Samsung
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="checkbox" id="brand-shark" className="text-blue-600" />
+            <label htmlFor="brand-shark" className="text-sm text-gray-700">
+              Shark
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="checkbox" id="brand-owlet" className="text-blue-600" />
+            <label htmlFor="brand-owlet" className="text-sm text-gray-700">
+              Owlet
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="checkbox" id="brand-crest" className="text-blue-600" />
+            <label htmlFor="brand-crest" className="text-sm text-gray-700">
+              Crest
+            </label>
+          </div>
+        </div>
+        <button className="flex items-center text-blue-600 text-sm mt-2 hover:underline">
+          <ChevronDown className="w-4 h-4 mr-1" />
+          See more
+        </button>
       </div>
 
-      {/* 🚚 Shipping Info */}
-      <div className="hidden lg:block p-4 bg-blue-50 border border-blue-200 rounded-md text-blue-900 shadow-sm">
-        <h3 className="text-sm font-medium mb-1">🚚 Free Shipping</h3>
-        <p className="text-xs">
-          Enjoy free shipping on orders over{" "}
-          <span className="font-semibold">$50</span>. Delivered within 3-5 days.
-        </p>
+      {/* Customer Reviews Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Customer Reviews</h3>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="review-all" name="reviews" defaultChecked className="text-blue-600" />
+            <label htmlFor="review-all" className="font-medium">
+              All
+            </label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <input type="radio" id="review-4up" name="reviews" className="text-blue-600" />
+            <label htmlFor="review-4up" className="flex items-center gap-2 text-sm text-gray-700">
+              {renderStars(4)}
+              <span>& up</span>
+            </label>
+          </div>
+        </div>
       </div>
 
-      <div className="hidden lg:block">
-        <img
-          src={salesbanner}
-          alt="Sale Banner"
-          className="rounded-md w-full object-cover"
-        />
+      {/* Price Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Price</h3>
+        <div className="mb-4">
+          <div className="text-sm text-gray-600 mb-2">$0 – $2,700</div>
+          <div className="relative">
+            <div className="w-full h-2 bg-gray-200 rounded-full">
+              <div className="h-2 bg-blue-600 rounded-full" style={{ width: "100%" }}></div>
+            </div>
+            <div className="absolute left-0 top-0 w-4 h-4 bg-blue-600 rounded-full -mt-1 -ml-2"></div>
+            <div className="absolute right-0 top-0 w-4 h-4 bg-blue-600 rounded-full -mt-1 -mr-2"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Discount Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Discount</h3>
+        <div className="mb-4">
+          <div className="text-sm text-gray-600 mb-2">0% – 100%</div>
+          <div className="relative">
+            <div className="w-full h-2 bg-gray-200 rounded-full">
+              <div className="h-2 bg-blue-600 rounded-full" style={{ width: "100%" }}></div>
+            </div>
+            <div className="absolute left-0 top-0 w-4 h-4 bg-blue-600 rounded-full -mt-1 -ml-2"></div>
+            <div className="absolute right-0 top-0 w-4 h-4 bg-blue-600 rounded-full -mt-1 -mr-2"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Prime Programs Section */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-3">Prime Programs</h3>
+        <div className="flex items-center space-x-2">
+          <input type="checkbox" id="prime-exclusive" className="text-blue-600" />
+          <label htmlFor="prime-exclusive" className="text-sm text-gray-700">
+            Prime Exclusive
+          </label>
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LeftsideStaticdata;
+export default LeftsideStaticdata

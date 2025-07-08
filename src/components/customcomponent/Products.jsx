@@ -128,7 +128,7 @@ const Products = () => {
               <SelectItem value="rating">Rating (High to Low)</SelectItem>
             </SelectContent>
           </Select>
-          {/* <LeftsideStaticdata /> */}
+          <LeftsideStaticdata />
         </div>
 
         <div className="lg:col-span-3">
