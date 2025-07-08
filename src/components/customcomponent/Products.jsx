@@ -23,7 +23,7 @@ import {
 import LeftsideStaticdata from "./LeftsideStaticdata";
 import { useGetProductsQuery } from "../../redux/features/products/productsApi";
 import ProductCard from "./ProductCard";
-import Loding from "./Loding";
+import Loading from "./Loading";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -81,7 +81,7 @@ const Products = () => {
   };
 
   if (isLoading) {
-    return <Loding />;
+    return <Loading />;
   }
 
   if (error) {

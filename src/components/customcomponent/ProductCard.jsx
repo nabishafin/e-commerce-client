@@ -32,13 +32,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link to={`/singleproducts/${product._id}`}>
-      <Card className="h-full flex flex-col hover:shadow-md transition-shadow rounded-[5px]">
+      <Card className="h-full flex flex-col hover:shadow-md transition-shadow rounded-[5px] ">
         <CardHeader className="p-2 pb-2">
           <div className="aspect-square mb-2 overflow-hidden rounded-md">
             <img
               src={product.image || "/placeholder.svg"}
               alt={product.name}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover    border-[1px] "
             />
           </div>
           <CardTitle className="text-base font-medium px-5 line-clamp-2 text-gray-800">{product.name}</CardTitle>
