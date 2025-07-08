@@ -99,7 +99,7 @@ const Products = () => {
       <h1 className="text-3xl font-bold mb-2 text-start">
         Discover the Best Deals at TrendShop Today
       </h1>
-      <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+      <p className="text-muted-foreground text-sm mb-8 ">
         Discover trending products, best deals, and smooth shopping experience
         all in one place. Find what you love — fast, easy, and secure.
       </p>
