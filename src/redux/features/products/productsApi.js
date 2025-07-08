@@ -1,20 +1,20 @@
-import { baseApi } from "../../api/baseApi"
+import { baseApi } from "../../api/baseApi";
 
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // Get all products
+    // ✅ Get all products
     getProducts: builder.query({
       query: () => "/products",
       providesTags: ["Product"],
     }),
 
-    // Get single product by ID
+    // ✅ Get single product by ID
     getProductById: builder.query({
       query: (id) => `/products/${id}`,
       providesTags: (result, error, id) => [{ type: "Product", id }],
     }),
 
-    // Create new product
+    // ✅ Add a new product
     createProduct: builder.mutation({
       query: (newProduct) => ({
         url: "/products",
@@ -24,7 +24,7 @@ export const productsApi = baseApi.injectEndpoints({
       invalidatesTags: ["Product"],
     }),
 
-    // Delete product
+    // ✅ Delete product
     deleteProduct: builder.mutation({
       query: (id) => ({
         url: `/products/${id}`,
@@ -33,13 +33,10 @@ export const productsApi = baseApi.injectEndpoints({
       invalidatesTags: ["Product"],
     }),
 
-    // Fake order submission endpoint
+    // ✅ (Optional) Simulate order submission
     submitOrder: builder.mutation({
       queryFn: async (orderData) => {
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 2000))
-
-        // Simulate successful response
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         return {
           data: {
             success: true,
@@ -47,12 +44,12 @@ export const productsApi = baseApi.injectEndpoints({
             message: "Order placed successfully!",
             orderData: orderData,
           },
-        }
+        };
       },
       invalidatesTags: ["Order"],
     }),
   }),
-})
+});
 
 export const {
   useGetProductsQuery,
@@ -60,4 +57,4 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useSubmitOrderMutation,
-} = productsApi
+} = productsApi;

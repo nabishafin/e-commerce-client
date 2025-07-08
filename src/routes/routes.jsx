@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout"
 import Home from "../pages/home/Home"
 import ProductsDetailsPage from "../pages/products/ProductsDetailsPage"
 import CartPage from "../pages/cart/CartPage"
+import Addproduct from "../pages/products/Addproduct"
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/add-product",
+        element: <Addproduct />,
       },
     ],
   },

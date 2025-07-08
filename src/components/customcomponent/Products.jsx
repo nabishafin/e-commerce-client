@@ -95,7 +95,7 @@ const Products = () => {
   }
 
   return (
-    <div className="mx-auto mt-10 px-14">
+    <div className="mx-auto mt-10 px-2 md:px-14">
       <h1 className="text-3xl font-bold mb-2 text-start">
         Discover the Best Deals at TrendShop Today
       </h1>

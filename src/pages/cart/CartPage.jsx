@@ -1,71 +1,90 @@
-import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
     clearCart,
     updateQuantity,
-} from "../../redux/features/cart/cartSlice"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, CreditCard, Truck, Shield, Tag } from "lucide-react"
-import CheckoutModal from "../../components/customcomponent/CheckoutModal.jsx"
-
+} from "../../redux/features/cart/cartSlice";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import {
+    ShoppingCart,
+    Plus,
+    Minus,
+    Trash2,
+    ArrowLeft,
+    CreditCard,
+    Truck,
+    Shield,
+    Tag,
+} from "lucide-react";
+import CheckoutModal from "../../components/customcomponent/CheckoutModal.jsx";
 
 const CartPage = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const { items, totalAmount, totalQuantity } = useSelector((state) => state.cart)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { items, totalAmount, totalQuantity } = useSelector(
+        (state) => state.cart
+    );
 
-    const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false)
+    const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
-    // Calculate shipping (free shipping over ৳1000)
-    const shippingCost = totalAmount >= 1000 ? 0 : 50
-    const finalTotal = totalAmount + shippingCost
+    const shippingCost = totalAmount >= 1000 ? 0 : 50;
+    const finalTotal = totalAmount + shippingCost;
 
     const handleRemoveItem = (id) => {
-        dispatch(removeFromCart(id))
-    }
+        dispatch(removeFromCart(id));
+    };
 
     const handleIncreaseQuantity = (id) => {
-        dispatch(increaseQuantity(id))
-    }
+        dispatch(increaseQuantity(id));
+    };
 
     const handleDecreaseQuantity = (id) => {
-        dispatch(decreaseQuantity(id))
-    }
+        dispatch(decreaseQuantity(id));
+    };
 
     const handleQuantityChange = (id, newQuantity) => {
-        const quantity = Number.parseInt(newQuantity)
+        const quantity = Number.parseInt(newQuantity);
         if (quantity > 0) {
-            dispatch(updateQuantity({ id, quantity }))
+            dispatch(updateQuantity({ id, quantity }));
         }
-    }
+    };
 
     const handleClearCart = () => {
-        dispatch(clearCart())
-    }
+        dispatch(clearCart());
+    };
 
     const handleCheckout = () => {
-        setIsCheckoutModalOpen(true)
-    }
+        setIsCheckoutModalOpen(true);
+    };
 
     const handleCloseCheckoutModal = () => {
-        setIsCheckoutModalOpen(false)
-    }
+        setIsCheckoutModalOpen(false);
+    };
 
     return (
         <>
             <div className="min-h-screen bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 py-8">
+                <div className="px-4 sm:px-6 md:px-10 mx-auto py-6 sm:py-8">
                     {/* Header */}
-                    <div className="flex items-center gap-4 mb-8">
-                        <Button variant="ghost" onClick={() => navigate("/")} className="flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
+                        <Button
+                            variant="ghost"
+                            onClick={() => navigate("/")}
+                            className="flex items-center gap-2"
+                        >
                             <ArrowLeft className="w-4 h-4" />
                             Continue Shopping
                         </Button>
@@ -79,18 +98,20 @@ const CartPage = () => {
                     </div>
 
                     {items.length === 0 ? (
-                        // Empty Cart
                         <div className="text-center py-16">
                             <ShoppingCart className="w-24 h-24 text-gray-400 mx-auto mb-6" />
-                            <h2 className="text-2xl font-bold text-gray-600 mb-4">Your cart is empty</h2>
-                            <p className="text-gray-500 mb-8">Looks like you haven't added any items to your cart yet.</p>
+                            <h2 className="text-2xl font-bold text-gray-600 mb-4">
+                                Your cart is empty
+                            </h2>
+                            <p className="text-gray-500 mb-8">
+                                Looks like you haven't added any items to your cart yet.
+                            </p>
                             <Button onClick={() => navigate("/")} size="lg">
                                 Start Shopping
                             </Button>
                         </div>
                     ) : (
-                        // Cart with Items
-                        <div className="grid lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* Cart Items */}
                             <div className="lg:col-span-2 space-y-4">
                                 <div className="flex justify-between items-center">
@@ -109,9 +130,9 @@ const CartPage = () => {
                                 {items.map((item) => (
                                     <Card key={item._id}>
                                         <CardContent className="p-6">
-                                            <div className="flex gap-4">
+                                            <div className="flex flex-col sm:flex-row gap-4">
                                                 {/* Product Image */}
-                                                <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                                                <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                                                     <img
                                                         src={item.image || "/api/placeholder/96/96"}
                                                         alt={item.name}
@@ -121,17 +142,23 @@ const CartPage = () => {
 
                                                 {/* Product Details */}
                                                 <div className="flex-1">
-                                                    <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
-                                                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">{item.description}</p>
+                                                    <h3 className="font-semibold text-lg mb-1 break-words">
+                                                        {item.name}
+                                                    </h3>
+                                                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                                                        {item.description}
+                                                    </p>
                                                     <div className="flex items-center justify-between">
                                                         <div className="flex items-center gap-3">
-                                                            <span className="text-lg font-bold text-blue-600">৳{item.price}</span>
+                                                            <span className="text-lg font-bold text-blue-600">
+                                                                ৳{item.price}
+                                                            </span>
                                                             <span className="text-sm text-gray-500">each</span>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                {/* Quantity Controls & Actions */}
+                                                {/* Quantity & Actions */}
                                                 <div className="flex flex-col items-end gap-3">
                                                     <Button
                                                         variant="ghost"
@@ -155,8 +182,10 @@ const CartPage = () => {
                                                         <Input
                                                             type="number"
                                                             value={item.quantity}
-                                                            onChange={(e) => handleQuantityChange(item._id, e.target.value)}
-                                                            className="w-16 h-8 text-center"
+                                                            onChange={(e) =>
+                                                                handleQuantityChange(item._id, e.target.value)
+                                                            }
+                                                            className="w-14 sm:w-16 h-8 text-center"
                                                             min="1"
                                                         />
                                                         <Button
@@ -170,7 +199,9 @@ const CartPage = () => {
                                                     </div>
 
                                                     <div className="text-right">
-                                                        <p className="text-lg font-bold">৳{(item.price * item.quantity).toFixed(2)}</p>
+                                                        <p className="text-lg font-bold">
+                                                            ৳{(item.price * item.quantity).toFixed(2)}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +212,7 @@ const CartPage = () => {
 
                             {/* Order Summary */}
                             <div className="lg:col-span-1">
-                                <Card className="sticky top-4">
+                                <Card className="sticky top-4 lg:top-4 sm:relative sm:top-0">
                                     <CardHeader>
                                         <CardTitle className="flex items-center gap-2">
                                             <CreditCard className="w-5 h-5" />
@@ -199,14 +230,19 @@ const CartPage = () => {
                                                     <Truck className="w-4 h-4" />
                                                     Shipping
                                                 </span>
-                                                <span className={shippingCost === 0 ? "text-green-600" : ""}>
+                                                <span
+                                                    className={
+                                                        shippingCost === 0 ? "text-green-600" : ""
+                                                    }
+                                                >
                                                     {shippingCost === 0 ? "FREE" : `৳${shippingCost}`}
                                                 </span>
                                             </div>
                                             {totalAmount < 1000 && (
                                                 <div className="text-sm text-blue-600 bg-blue-50 p-2 rounded">
                                                     <Tag className="w-4 h-4 inline mr-1" />
-                                                    Add ৳{(1000 - totalAmount).toFixed(2)} more for free shipping!
+                                                    Add ৳{(1000 - totalAmount).toFixed(2)} more for free
+                                                    shipping!
                                                 </div>
                                             )}
                                         </div>
@@ -215,7 +251,9 @@ const CartPage = () => {
 
                                         <div className="flex justify-between text-lg font-bold">
                                             <span>Total</span>
-                                            <span className="text-blue-600">৳{finalTotal.toFixed(2)}</span>
+                                            <span className="text-blue-600">
+                                                ৳{finalTotal.toFixed(2)}
+                                            </span>
                                         </div>
 
                                         <Button className="w-full" size="lg" onClick={handleCheckout}>
@@ -236,9 +274,12 @@ const CartPage = () => {
             </div>
 
             {/* Checkout Modal */}
-            <CheckoutModal isOpen={isCheckoutModalOpen} onClose={handleCloseCheckoutModal} />
+            <CheckoutModal
+                isOpen={isCheckoutModalOpen}
+                onClose={handleCloseCheckoutModal}
+            />
         </>
-    )
-}
+    );
+};
 
-export default CartPage
+export default CartPage;

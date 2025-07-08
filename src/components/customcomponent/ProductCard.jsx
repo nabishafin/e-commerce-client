@@ -1,4 +1,4 @@
-
+"use client"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { addToCart } from "../../redux/features/cart/cartSlice"
