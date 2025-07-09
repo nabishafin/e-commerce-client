@@ -5,9 +5,15 @@ import { useGetProductByIdQuery } from "../../redux/features/products/productsAp
 import { addToCart, openCart } from "../../redux/features/cart/cartSlice";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { ShoppingCart, Star, Heart, Share2, ArrowLeft } from "lucide-react";
-import { toast } from "react-hot-toast"; // 
+import { toast } from "react-hot-toast"; //
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -16,8 +22,8 @@ const ProductDetailsPage = () => {
   const { items } = useSelector((state) => state.cart);
 
   // Check if product is already in cart
-  const isInCart = items.some(item => item._id === product?._id);
-  const cartItem = items.find(item => item._id === product?._id);
+  const isInCart = items.some((item) => item._id === product?._id);
+  const cartItem = items.find((item) => item._id === product?._id);
 
   useEffect(() => {
     if (product) {
@@ -27,13 +33,15 @@ const ProductDetailsPage = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      dispatch(addToCart({
-        _id: product._id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        description: product.description,
-      }));
+      dispatch(
+        addToCart({
+          _id: product._id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+        })
+      );
 
       // Show success toast
       toast.success(`${product.name} added to cart!`);
@@ -46,13 +54,15 @@ const ProductDetailsPage = () => {
   const handleBuyNow = () => {
     if (product) {
       // Add to cart first
-      dispatch(addToCart({
-        _id: product._id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        description: product.description,
-      }));
+      dispatch(
+        addToCart({
+          _id: product._id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+        })
+      );
 
       // Open cart for checkout
       dispatch(openCart());
@@ -71,8 +81,12 @@ const ProductDetailsPage = () => {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Product Not Found</h2>
-          <p className="text-gray-600">The product you're looking for doesn't exist.</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Product Not Found
+          </h2>
+          <p className="text-gray-600">
+            The product you're looking for doesn't exist.
+          </p>
           <Button className="mt-4" onClick={() => window.history.back()}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Go Back
@@ -120,12 +134,17 @@ const ProductDetailsPage = () => {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-4 h-4 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-                        }`}
+                      className={`w-4 h-4 ${
+                        i < 4
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-gray-300"
+                      }`}
                     />
                   ))}
                 </div>
-                <span className="text-sm text-gray-600">(4.0) • 124 reviews</span>
+                <span className="text-sm text-gray-600">
+                  (4.0) • 124 reviews
+                </span>
               </div>
 
               {/* Price */}
@@ -146,12 +165,14 @@ const ProductDetailsPage = () => {
               {/* Stock Status */}
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-green-600 font-medium">In Stock</span>
+                <span className="text-sm text-green-600 font-medium">
+                  In Stock
+                </span>
               </div>
             </div>
 
             {/* Description */}
-            <Card>
+            <Card className="rounded-sm">
               <CardHeader>
                 <CardTitle className="text-lg">Description</CardTitle>
               </CardHeader>
@@ -164,7 +185,7 @@ const ProductDetailsPage = () => {
 
             {/* Features */}
             {product.features && (
-              <Card>
+              <Card className="rounded-sm">
                 <CardHeader>
                   <CardTitle className="text-lg">Features</CardTitle>
                 </CardHeader>
@@ -191,7 +212,7 @@ const ProductDetailsPage = () => {
                   disabled={isInCart}
                 >
                   <ShoppingCart className="w-4 h-4 mr-2" />
-                  {isInCart ? `Added (${cartItem?.quantity})` : 'Add to Cart'}
+                  {isInCart ? `Added (${cartItem?.quantity})` : "Add to Cart"}
                 </Button>
                 <Button
                   onClick={handleBuyNow}
@@ -221,15 +242,21 @@ const ProductDetailsPage = () => {
                 </div>
                 <div>
                   <span className="font-medium">Category:</span>
-                  <span className="ml-2 text-gray-600">{product.category || 'General'}</span>
+                  <span className="ml-2 text-gray-600">
+                    {product.category || "General"}
+                  </span>
                 </div>
                 <div>
                   <span className="font-medium">Brand:</span>
-                  <span className="ml-2 text-gray-600">{product.brand || 'No Brand'}</span>
+                  <span className="ml-2 text-gray-600">
+                    {product.brand || "No Brand"}
+                  </span>
                 </div>
                 <div>
                   <span className="font-medium">Warranty:</span>
-                  <span className="ml-2 text-gray-600">{product.warranty || '1 Year'}</span>
+                  <span className="ml-2 text-gray-600">
+                    {product.warranty || "1 Year"}
+                  </span>
                 </div>
               </div>
             </div>
